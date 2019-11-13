@@ -1,0 +1,23 @@
+<!doctype html>
+
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Купить женскую спортивную одежду в Москве</title>
+</head>
+
+<body>
+  <div>
+    <h1><a href="/">Be Better</a></h1>
+  </div>
+  <div>
+    {% for product in products %}
+    <div>
+        <h1><a href="">{{ product.title }}</a></h1>
+        <p>price: {{ product.price}}</p>
+        <p>{{ product.text|linebreaksbr }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</body>
+</html>

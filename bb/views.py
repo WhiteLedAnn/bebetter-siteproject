@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.utils import timezone
+from .models import PostProduct
 
 def home(request):
     """
@@ -8,6 +10,7 @@ def home(request):
     return render(request, 'home.html', context = {})
 
 def products_list(request):
-    return render(request, 'products/products_list.html', {})
+    products = PostProduct.objects.filter(first_appearance_date__lte=timezone.now()).order_by('first_appearance_date')
+    return render(request, 'products/products_list.html', {'products' : products})
 
 # Create your views here.
