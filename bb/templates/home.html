@@ -1,9 +1,16 @@
-<html>
+<!doctype html>
+
+<html lang="ru">
     <head>
-        <title>Home paaage</title>
+        {% load static %}
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/bb.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+        <title>Home page</title>
     </head>
     <body>
-        <div>
+        <div class="page-header">
             <h1><a href="/">This is BeBetter home page</a></h1>
         </div>
 

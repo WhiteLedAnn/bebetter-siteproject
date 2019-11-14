@@ -1,23 +1,30 @@
 <!doctype html>
 
 <html lang="ru">
-<head>
-  <meta charset="utf-8">
-  <title>Купить женскую спортивную одежду в Москве</title>
-</head>
+    <head>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/bb.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+        <meta charset="utf-8">
+        <title>Купить женскую спортивную одежду в Москве</title>
+    </head>
 
-<body>
-  <div>
-    <h1><a href="/">Be Better</a></h1>
-  </div>
-  <div>
-    {% for product in products %}
-    <div>
-        <h1><a href="">{{ product.title }}</a></h1>
-        <p>price: {{ product.price}}</p>
-        <p>{{ product.text|linebreaksbr }}</p>
-    </div>
-    {% endfor %}
-  </div>
-</body>
+    <body>
+        <div>
+            <h1><a href="/">Be Better</a></h1>
+        </div>
+        <div class="content container">
+            <div class = "row">
+                <div class="col-md-8">
+                    {% for product in products %}
+                    <div class="product">
+                        <h1><a href="">{{ product.title }}</a></h1>
+                        <p>price: {{ product.price}}</p>
+                        <p>{{ product.text|linebreaksbr }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
