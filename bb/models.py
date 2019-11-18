@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
-from unidecode import unidecode
+from unidecode import unidecode # pip install unidecode
 from django.template import defaultfilters
 from uuslug import slugify # преобразование заголовков в ссылки pip install django-uuslug
 
