@@ -1,23 +1,12 @@
-<!doctype html>
+{% extends 'base.html' %}
+    {% block title %}
+        Be Better Официальный магазин - пока не работает
+    {% endblock %}
 
-<html lang="ru">
-    <head>
-        {% load static %}
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="{% static 'css/bb.css' %}">
-        <link href="https://fonts.googleapis.com/css?family=Roboto&subset=latin,cyrillic" rel="stylesheet" type="text/css">
-        <title>Home page</title>
-    </head>
-    <body>
-        <div class="page-header">
-            <h1><a href="/">This is BeBetter home page</a></h1>
-        </div>
-
-        <div>
-            <h2><a href="">Be Better</a></h2>
+    {% block content %}
+    <main><div class="col-xs-12">
+        <div class = "header">
             <p>Философия Быть Лучше в том, что если ты не идёшь вперёд, не становишься лучше - то ты в лучшем случае стоишь на месте. По сравнению с тобой, идущей вперёд, ты становишься всё хуже и хуже: чтобы этого избежать, надо всё время пытаться быть лучше, чем ты есть и расти над собой.</p>
         </div>
-
-    </body>
-</html>
+    </div></main>
+    {% endblock %}

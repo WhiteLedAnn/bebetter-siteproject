@@ -1,0 +1,69 @@
+<!doctype html>
+
+<html lang="ru">
+    <head>
+        {% load static %}
+        <meta charset="utf-8" class="bb-head">
+        <meta name="viewport" content="width=device-width, initial-scale=1" class="bb-head">
+        <link rel="shortcut icon" href="{% static '/images/bb_favicon.png' %}" type="image/png">
+        <!--<link rel="stylesheet" href="{% static 'css/min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/thememin.css' %}">-->
+        <link rel="stylesheet" href="{% static 'css/bb.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+        <title class="bb-head">
+            {% block title %}
+            {% endblock %}
+        </title>
+    </head>
+    <body>
+        <div>
+            <h1><a href="/">Be Better</a></h1>
+        </div>
+        <div id = "bb">
+            <header>
+                <div class="header_h">
+                    <!--<div class="cookieContainer_h">
+                        дописать сообщение об использовании куки                        
+                    </div>-->
+                    <div class="container_h">
+                        <div class="logo_h">
+                            <a href="/">
+                                {% include "bblogo.html" %}
+                            </a>
+                        </div>
+                        <nav class = "nav_n">
+                            <ul class="list_nav">
+                                <li class="item_nav">
+                                    <a class="a_nav" href="/products">
+                                        <span>Одежда</span>
+                                    </a>
+                                    <!--<ul class="categoryList_nav">
+                                        <li>
+                                            <a class="a_nav" href="/products/hoodies">Худи и свитшоты</a>
+                                        </li>
+                                        <li>
+                                            <a class="a_nav" href="/products/t-shirt">Футболки</a>
+                                        </li>
+                                    </ul>-->
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class = "block_act">
+                            <div class = "search"><label></label></div>
+                            <div class = "icons"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class = "divider_h">
+                </div>
+            </header>
+            <div class = "container_all">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+
+    </body>
+</html>
+<!-- Это - базовый шаблон, блок, который используется для разных страниц -->
+<!-- =.= code by (ab) -->

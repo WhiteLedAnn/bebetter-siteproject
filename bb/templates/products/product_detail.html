@@ -6,15 +6,12 @@
 {% block content %}
     <div class = "row">
         <div class="col-md-8">
-            {% for product in products %}
                 <div class="product">
-                    <h1><a href = "{% url 'product_detail' translit_title=product.translit_title %}">{{ product.title }}</a></h1>
+                    <h1>{{ product.title }}</h1>
                     <p>price: {{ product.price}}</p>
                     <p>{{ product.text|linebreaksbr }}</p>
                 </div>
-            {% endfor %}
         </div>
     </div>
 {% endblock %}
 <!-- =.= code by (ab) -->
-<!-- pk is primary key -->
