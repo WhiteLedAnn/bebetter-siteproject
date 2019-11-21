@@ -18,3 +18,6 @@ def product_detail(request, translit_title):
     return render(request, 'products/product_detail.html', {'product' : product})
 
 # Create your views here.
+"""
+Создание представлений
+"""
