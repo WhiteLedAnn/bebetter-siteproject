@@ -2,12 +2,14 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900);
 
 html {
+    overflow: auto;
     box-sizing: border-box;
     cursor: default;
     font-family: sans-serif;
     line-height: 1.5;
     -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%; }
+    -webkit-text-size-adjust: 100%; 
+}
 
 h1 a {
     color: violet;
@@ -49,6 +51,13 @@ textarea {
 
 article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary {
     display: block;
+}
+
+.element:before {
+    content: "\f067";
+    font-family: FontAwesome;
+    color: #aaaaaa;
+    margin-right: 10px; 
 }
 
 .header_h {

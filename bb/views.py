@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from .models import PostProduct
+from .forms import PostProductForm
 
 def home(request):
     """
@@ -16,6 +17,17 @@ def products_list(request):
 def product_detail(request, translit_title):
     product = get_object_or_404(PostProduct, translit_title=translit_title)
     return render(request, 'products/product_detail.html', {'product' : product})
+
+def new_product(request):
+    if request.method == "POST":
+        form = PostProductForm(request.POST)
+        if form.is_valid():
+            product = form.save(commit=False)
+            product.first_appearance_date = timezone.now()
+            product.save()
+    else:
+        form = PostProductForm()
+    return render(request, 'products/new_product.html', {'form': form})
 
 # Create your views here.
 """
