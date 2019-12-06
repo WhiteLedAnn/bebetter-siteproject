@@ -54,7 +54,6 @@ article, aside, details, figcaption, figure, footer, header, main, menu, nav, se
 }
 
 .element:before {
-    content: "\f067";
     font-family: FontAwesome;
     color: #aaaaaa;
     margin-right: 10px; 

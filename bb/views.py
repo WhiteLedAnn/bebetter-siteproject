@@ -25,8 +25,23 @@ def new_product(request):
             product = form.save(commit=False)
             product.first_appearance_date = timezone.now()
             product.save()
+            translit_title = product.translit_title
+            return redirect('product_detail', translit_title)
     else:
         form = PostProductForm()
+    return render(request, 'products/new_product.html', {'form': form})
+
+def product_edit(request, translit_title):
+    post = get_object_or_404(PostProduct, translit_title=translit_title)
+    if request.method == "POST":
+        form = PostProductForm(request.POST, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.first_appearance_date = timezone.now()
+            post.save()
+            return redirect('product_detail', translit_title=translit_title)
+    else:
+        form = PostProductForm(instance=post)
     return render(request, 'products/new_product.html', {'form': form})
 
 # Create your views here.
