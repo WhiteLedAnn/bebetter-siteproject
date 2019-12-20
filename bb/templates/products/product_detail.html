@@ -10,9 +10,25 @@
     <div class = "row">
         <div class="col-md-8">
                 <div class="product">
-                    <h1>{{ product.title }}</h1>
-                    <p>price: {{ product.price}}</p>
-                    <p>{{ product.text|linebreaksbr }}</p>
+                    {% if product.in_stock %}
+                        {% if product.published %}
+                            <p>published: {{ product.published }}</p>
+                        {% else %}
+                            <a href="{% url 'product_publish' translit_title=product.translit_title %}" class="button">Publish</a> 
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'product_remove' translit_title=product.translit_title %}" class="actions_act"><span class="fa fa-trash-o"></span></a>
+                            <div class="date">
+                                <p>last update: {{ product.last_update_date }}</p>
+                            </div>                            
+                        {% endif %}                        
+                        <h1>{{ product.title }}</h1>
+                        <p>price: {{ product.price}}</p>
+                        <p>{{ product.text|linebreaksbr }}</p>
+
+                    {% else %}
+                        <h2>Товара нет в наличии</h2>
+                    {% endif %}    
                 </div>
         </div>
     </div>

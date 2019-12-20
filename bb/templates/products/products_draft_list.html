@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}
+    Edit product
+{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class = "row">
+            <div class="col-md-8">
+                {% for product in products %}
+                    <div class="product">
+                        <p class="date">last update: {{ product.last_update_date|date:'d-m-Y' }}</p>
+                        <h1><a href = "{% url 'product_detail' translit_title=product.translit_title %}">{{ product.title }}</a></h1>
+                        <p>price: {{ product.price}}</p>
+                        <p>{{ product.text|linebreaksbr }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+<!-- =.= code by (ab) -->

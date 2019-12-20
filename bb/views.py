@@ -11,7 +11,7 @@ def home(request):
     return render(request, 'home.html', context = {})
 
 def products_list(request):
-    products = PostProduct.objects.filter(first_appearance_date__lte=timezone.now()).order_by('first_appearance_date')
+    products = PostProduct.objects.filter(last_update_date__lte=timezone.now()).exclude(published = False).order_by('last_update_date')
     return render(request, 'products/products_list.html', {'products' : products})
 
 def product_detail(request, translit_title):
@@ -23,7 +23,6 @@ def new_product(request):
         form = PostProductForm(request.POST)
         if form.is_valid():
             product = form.save(commit=False)
-            product.first_appearance_date = timezone.now()
             product.save()
             translit_title = product.translit_title
             return redirect('product_detail', translit_title)
@@ -32,17 +31,30 @@ def new_product(request):
     return render(request, 'products/new_product.html', {'form': form})
 
 def product_edit(request, translit_title):
-    post = get_object_or_404(PostProduct, translit_title=translit_title)
+    product = get_object_or_404(PostProduct, translit_title=translit_title)
     if request.method == "POST":
-        form = PostProductForm(request.POST, instance=post)
+        form = PostProductForm(request.POST, instance=product)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.first_appearance_date = timezone.now()
-            post.save()
+            product = form.save(commit=False)
+            product.save()
             return redirect('product_detail', translit_title=translit_title)
     else:
-        form = PostProductForm(instance=post)
+        form = PostProductForm(instance=product)
     return render(request, 'products/new_product.html', {'form': form})
+
+def products_draft_list(request):
+    products = PostProduct.objects.filter(published=False).order_by('last_update_date')
+    return render(request, 'products/products_draft_list.html', {'products': products})
+
+def product_publish(request, translit_title):
+    product = get_object_or_404(PostProduct, translit_title=translit_title)
+    product.publish()
+    return redirect('product_detail', translit_title)
+
+def product_remove(request, translit_title):
+    product = get_object_or_404(PostProduct, translit_title=translit_title)
+    product.delete()
+    return redirect('products_list')
 
 # Create your views here.
 """
