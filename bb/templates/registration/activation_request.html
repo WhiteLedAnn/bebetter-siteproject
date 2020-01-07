@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}
+    Confirm
+{% endblock %}
+
+{% block content %}
+    {% autoescape off %}
+        Hi {{ user.username }}, please click the following link to confirm your registration:
+        http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+    {% endautoescape %}
+{% endblock %}

@@ -16,10 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
-from bb import views
+from bb import views as bbviews
+from django.contrib.auth import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
+    path('', bbviews.home, name='home'),
+    path('cabinet/', bbviews.cabinet, name='cabinet'),
+    path('account/login/', views.LoginView.as_view(), name='login'),
+    path('account/logout/', views.LogoutView.as_view(next_page='/'), name='logout'),
+    path('account/register/', bbviews.registration_view, name="register"),
+    path('sent/', bbviews.activation_sent_view, name="activation_sent"),
+    path('activate/<slug:uidb64>/<slug:token>/', bbviews.activate, name='activate'),
     path('products/', include('bb.urls')),
 ]

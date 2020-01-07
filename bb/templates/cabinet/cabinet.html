@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+    Cabinet
+{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <p>Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+    {% else %}
+        <a href="{% url 'login' %}" class="button"><i class="fa fa-sign-in"> Login</i></a>
+        <a href="{% url 'register' %}" class="button"><i class="fa fa-user-plus">  Registration</i></a> 
+    {% endif %}
+{% endblock %}
+<!-- =.= code by (ab) -->
