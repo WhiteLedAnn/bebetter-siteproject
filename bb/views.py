@@ -94,22 +94,28 @@ def cabinet(request):
     """
     # Отрисовка HTML-шаблона cabinet.html с данными внутри переменной контекста context
     return render(request, 'cabinet/cabinet.html', context = {})
+ 
 
 def registration_view(request):
     if request.method  == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            print(user)
-            user.refresh_from_db()
-            user.profile.username = form.cleaned_data.get('username') or None
-            user.profile.email = form.cleaned_data.get('email') or None
             user.is_active = False # не может залогиниться пока не подтвердит ссылку переделать на False
             user.save()
+            print(user, "print user")
+            #user.refresh_from_db()
+            print(user.username, "print user.username")
+            print(user.email, "print user.username")
+            print(user.pk, "print user.pk")
+            #user.username = form.cleaned_data.get('username') or None
+            #user.email = form.cleaned_data.get('email') or None
+            #user.profile.username = form.cleaned_data.get('username') or None
+            #user.profile.email = form.cleaned_data.get('email') or None                
             my_password = form.cleaned_data.get('password1')  # added
             to_email = form.cleaned_data.get('email')
             current_site = get_current_site(request)
-            subject = 'Please Activate Your Account'
+            subject = 'Please Activate Your Be Better Account'
             message = render_to_string('registration/activation_request.html', {
                 'user': user,
                 'domain': current_site.domain,
